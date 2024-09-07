@@ -1,0 +1,65 @@
+menu = {
+    "cold_drinks": {
+        "cold coffee": 400,
+        "coca_cola": 400,
+        "lemonade": 350,
+        "iced tea": 300,
+        "smoothie": 450
+    },
+    "hot_drinks": {
+        "hot_coffee": 320,
+        "tea": 330,
+        "hot chocolate": 370,
+        "espresso": 300,
+        "latte": 350
+    },
+    "snacks": {
+        "sandwich": 150,
+        "fries": 100,
+        "nachos": 200,
+        "spring rolls": 180,
+        "samosa": 120
+    },
+    "dinner": {
+        "pasta": 500,
+        "pizza": 600,
+        "burger": 450,
+        "steak": 700,
+        "salad": 350
+    },
+    "breakfast": {
+        "pancakes": 200,
+        "omelette": 180,
+        "waffles": 220,
+        "cereal": 150,
+        "toast": 100
+    }
+}
+
+def ask_for_order():
+    global total_price
+    total_price = 0
+    order = []
+    x = 0
+    n = int(input("How many items do you want to order? : "))
+    while x != n:
+        x += 1
+        item = input(f"What do you want to order {x} : ").lower()
+        order.append(item)
+        # Find the item price in the menu
+        found = False
+        for category in menu.values():
+            if item in category:
+                total_price += category[item]
+                found = True
+                break
+        if not found:
+            print(f"Sorry, {item} is not available.")
+    print("_" * 30)
+    print("You have ordered the following:")
+    for index, i in enumerate(order, start=1):
+        print(f"{index}. {i}")
+    print("_" * 30)
+    print(f"And your final price is {total_price}")
+
+ask_for_order()
