@@ -1,0 +1,36 @@
+dict = {
+    "cars": {
+        "mustang": 5000000,
+        "audi": 3000000,
+        "supra": 4000000
+    },
+    "bikes":
+        {
+            "apachhi": 450000,
+            "R15": 610000,
+            "herohonda": 120000
+
+        }
+
+}
+
+
+def asl_question():
+    global price
+    price = 0
+    order = []
+    item = input("what do you want to buy? :")
+    order.append(item)
+    found = False
+    for categories in dict.values():
+        if item in categories:
+            price += categories[item]
+            found = True
+            break
+    if not found:
+        print(f"Sorry we don't have {item}")
+    print("_" * 30)
+    print(f"your total cost is {price}")
+
+
+asl_question()
